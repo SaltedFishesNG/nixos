@@ -1,0 +1,75 @@
+{
+  "layer": "top",
+  "position": "top",
+  "margin": "5 5 0 0",
+  "height": 30,
+
+  "modules-left": [
+    "niri/workspaces",
+    "custom/theme",
+    "niri/window"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "tray",
+    "network",
+    "bluetooth",
+    "backlight",
+    "pulseaudio",
+    "battery"
+  ],
+
+  "niri/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "default": "○",
+      "active": "●"
+    }
+  },
+  "niri/window": {
+    "icon": true,
+    "icon-size": 15,
+    "max-length": 30
+  },
+  "custom/theme": {
+    "format": "",
+    "on-click": "dconf write /org/gnome/desktop/interface/color-scheme '\"prefer-dark\"'",
+    "on-click-right": "dconf write /org/gnome/desktop/interface/color-scheme '\"prefer-light\"'"
+  },
+
+  "clock": {
+    "format": "{:%a %b %d %H:%M:%S %Z %Y}",
+    "interval": 1
+  },
+
+  "tray": {
+      "spacing": 10
+  },
+  "network": {
+    "format-wifi": " {essid}",
+    "format-ethernet": " ",
+    "format-linked": "{ifname} (No IP)",
+    "format-disconnected": " Disconnected",
+    "format-alt": "{ipaddr}/{cidr}",
+    "interval": 5
+  },
+  "bluetooth": {
+    "format": " {status}",
+    "format-connected": " {num_connections} {device_battery_percentage}"
+  },
+  "backlight": {
+    "format-icons": [""],
+    "format": "{icon} {percent}%",
+    "reverse-scrolling": true
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-icons": {
+      "default": ["", "", ""]
+    },
+    "format-muted": "",
+    "reverse-scrolling": true
+  }
+}
