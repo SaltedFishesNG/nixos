@@ -120,7 +120,6 @@
   # systemd 救急模式，在无状态系统下没有用处
   systemd.enableEmergencyMode = false;
 
-  # 禁用文档
   documentation = {
     enable = false;
     doc.enable = false;
@@ -129,8 +128,6 @@
     dev.enable = false;
     info.enable = false;
   };
-
-  programs.command-not-found.enable = false;
 
   security.sudo-rs = {
     enable = true;
@@ -165,6 +162,7 @@
       use-cgroups = true;
     };
   };
+
 
   programs.nh = {
     enable = true;

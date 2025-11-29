@@ -5,6 +5,7 @@
     "L+ %h/.config/waybar/config.jsonc 0755 ${userName} users - ${./desktop/waybar/config.jsonc}"
     "L+ %h/.config/waybar/style.css 0755 ${userName} users - ${./desktop/waybar/style.css}"
     "L+ %h/.config/foot/foot.ini 0755 ${userName} users - ${./desktop/foot.ini}"
+    "L+ %h/.config/mako/config 0644 ${userName} users - ${./desktop/mako.ini}"
     "L+ %h/.config/niri/config.kdl 0644 ${userName} users - ${./desktop/niri.kdl}"
     "L+ %h/.wezterm.lua 0755 ${userName} users - ${./desktop/wezterm.lua}"
 

@@ -8,7 +8,7 @@ input {
         xkb {
             layout "us"
         }
-        // numlock
+        numlock
     }
     touchpad {
         tap
@@ -64,7 +64,7 @@ window-rule {
 window-rule {
     match app-id=r#"^steam$"# title=r#"^notificationtoasts_\d+_desktop$"#
     open-floating true
-    default-floating-position x=20 y=20 relative-to="bottom-right"
+    default-floating-position x=15 y=15 relative-to="top-right"
 }
 window-rule {
     geometry-corner-radius 10
