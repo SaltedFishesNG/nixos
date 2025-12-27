@@ -1,0 +1,103 @@
+{
+  "layer": "top",
+  "position": "top",
+  "margin": "5 0 0 0",
+  "height": 30,
+
+  "modules-left": ["niri/workspaces", "custom/theme", "niri/window"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "tray",
+    "network",
+    "bluetooth",
+    "backlight",
+    "pulseaudio",
+    "pulseaudio#mic",
+  ],
+
+  "niri/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "default": "○",
+      "active": "●",
+    },
+  },
+  "custom/theme": {
+    "format": "",
+    "on-click": "dconf write /org/gnome/desktop/interface/color-scheme '\"prefer-dark\"'",
+    "on-click-right": "dconf write /org/gnome/desktop/interface/color-scheme '\"prefer-light\"'",
+    "tooltip": false,
+  },
+  "niri/window": {
+    "icon": true,
+    "icon-size": 15,
+    "max-length": 30,
+    "tooltip": false,
+  },
+
+  "clock": {
+    "interval": 1,
+    "format": "{:%a %b %d %H:%M:%S %Z %Y}",
+    "tooltip": true,
+    "tooltip-format": "<span size='9pt' font='Iosevka'>{calendar}</span>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 4,
+      "on-scroll": 1,
+      "weeks-pos": "right",
+      "format": {
+        "months": "<span color='#fff'><b>{}</b></span>",
+        "days": "<span color='#fff'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#92cafa'><b>{}</b></span>",
+        "today": "<span color='#FF0000'><b><u>{}</u></b></span>",
+      },
+    },
+  },
+
+  "tray": {
+    "spacing": 10,
+  },
+  "network": {
+    "interval": 1,
+    "format-wifi": " {essid}",
+    "format-ethernet": " {ifname}",
+    "format-linked": "{ifname} (No IP)",
+    "format-disconnected": " Disconnected",
+    "format-alt": " {bandwidthDownBytes}  {bandwidthUpBytes}",
+    "tooltip": true,
+    "tooltip-format": "IP: {ipaddr}/{cidr}",
+  },
+  "bluetooth": {
+    "format": " {status}",
+    "format-connected": " {num_connections} {device_battery_percentage}",
+    "on-click": "bluetoothctl power on",
+    "on-click-right": "bluetoothctl power off",
+  },
+  "backlight": {
+    "reverse-scrolling": true,
+    "format-icons": [""],
+    "format": "{icon} {percent}%",
+    "tooltip": false,
+  },
+  "pulseaudio": {
+    "reverse-scrolling": true,
+    "format": "{icon} {volume}%",
+    "format-icons": {
+      "default": ["", "", ""],
+    },
+    "format-muted": "",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click-right": "pavucontrol -t 3",
+  },
+  "pulseaudio#mic": {
+    "reverse-scrolling": true,
+    "format": "{format_source}",
+    "format-source": " {volume}%",
+    "format-source-muted": "",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+    "on-click-right": "pavucontrol -t 4",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%+ --limit 1.5",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 1%-",
+  },
+}

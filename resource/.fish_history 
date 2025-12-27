@@ -1,0 +1,20 @@
+- cmd: nixos-rebuild switch --sudo --flake ~/Projects/nixos
+- cmd: sudo nix-collect-garbage -d
+- cmd: nix store gc
+- cmd: nix flake update
+- cmd: nix shell nixpkgs#nix-tree nixpkgs#ripgrep
+- cmd: nix-store --gc --print-roots | rg -v '/proc/' | rg -Po '(?<= -> ).*' | xargs -o nix-tree
+- cmd: nix run github:nix-community/nix-index-database libgtk-3.so
+- cmd: find /nix/store -name "libgtk-3.so" 2>/dev/null
+
+- cmd: git update-ref -d HEAD
+- cmd: git reset --soft HEAD^
+- cmd: git commit -S -m "init"
+- cmd: git add .
+- cmd: git push -f
+
+- cmd: curl cip.cc
+- cmd: nix run nixpkgs#fastfetch
+- cmd: nix run nixpkgs#python3 -- -m http.server
+- cmd: nix run nixpkgs#xorg.xwininfo
+- cmd: vim ~/.local/share/fish/fish_history
