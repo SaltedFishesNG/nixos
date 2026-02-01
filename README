@@ -1,0 +1,39 @@
+0.Third-Party Assets
+  The `resource/bg.png` and `resource/niri/lock.png` are NOT owned by me.
+    Source of `resource/images/bg.png`: <https://www.pixiv.net/artworks/126713347>
+    Source of `resource/images/lock.png`: <https://www.pixiv.net/artworks/137010221>
+  These images are used under fair use for non-commercial purposes.
+  If you are the original artist and wish to have your work removed, please contact me.
+
+1.Install
+  Prerequisites:
+  -> UEFI boot mode enabled
+  -> Secure Boot disabled during installation
+  -> At least 1.5GB RAM (if using official NixOS Minimal ISO)
+  -> At least 3.0GB RAM (if using official NixOS Graphical ISO)
+    $ git clone <repo>
+    $ sudo nixos-generate-config --no-filesystems --show-hardware-config > ./nixos/hardware.nix
+  Edit the disk configuration to match your system
+    $ vim ./nixos/modules/disko.nix
+    $ sudo nix-shell -p disko --run "disko -m destroy,format,mount ./nixos/modules/disko.nix"
+  Preventing memory shortage
+    $ sudo swapon /mnt/swap/swapfile
+  Generate Secure Boot Keys
+    $ sudo nix-shell -p sbctl --run "sbctl create-keys"
+    $ sudo mv /var/lib/sbctl /mnt/persist/lanzaboote
+  Install NixOS
+    $ sudo mkdir -p /mnt/persist/home/saya/Projects
+    $ sudo cp -r ./nixos /mnt/persist/home/saya/Projects
+    $ sudo nixos-install --flake /mnt/persist/home/saya/Projects/nixos#Gamma
+    $ reboot
+  The default username is “saya”, and the password is “none”
+
+2.Secure Boot
+  Enter Secure Boot Setup Mode
+  > Then refer to <https://nix-community.github.io/lanzaboote/getting-started/enable-secure-boot.html>
+    $ sudo mount -o bind /persist/lanzaboote /var/lib/sbctl
+    $ sudo nix run nixpkgs#sbctl -- enroll-keys
+  Enable Secure Boot
+
+3.Automatic LUKS decryption with TPM 2.0
+    $ sudo systemd-cryptenroll --tpm2-device=auto --tpm2-pcrs=0+7 /dev/disk/by-uuid/<YOUR-PARTITION-UUID>
