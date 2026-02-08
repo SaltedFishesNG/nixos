@@ -4,8 +4,6 @@
 
     disko.url = "github:nix-community/disko/latest";
     disko.inputs.nixpkgs.follows = "nixpkgs";
-    lanzaboote.url = "github:nix-community/lanzaboote/v1.0.0";
-    lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
     preservation.url = "github:nix-community/preservation";
   };
 
@@ -17,8 +15,8 @@
     {
       nixosConfigurations.Gamma = nixpkgs.lib.nixosSystem {
         modules = [
+          inputs.disko.nixosModules.disko
           ./modules/disko.nix
-          ./modules/lanzaboote.nix
           ./modules/preservation.nix
           ./resource/resource.nix
           ./software/software.nix

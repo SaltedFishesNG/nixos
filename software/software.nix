@@ -4,14 +4,12 @@
     ./desktop.nix
     ./fcitx5.nix
     ./font.nix
-    ./game.nix
     ./proxy.nix
-    ./UNFREE.nix
-    ./virtualisation.nix
   ];
 
   environment.systemPackages = with pkgs; [
     mpv
+    vscodium
     zed-editor
 
     appimage-run

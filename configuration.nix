@@ -67,17 +67,6 @@ in
       execWheelOnly = true;
       wheelNeedsPassword = false;
     };
-    tpm2 = {
-      enable = true;
-      pkcs11.enable = true;
-      tctiEnvironment.enable = true;
-    };
-  };
-
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-    settings.General.Experimental = true;
   };
 
   systemd.enableEmergencyMode = false;

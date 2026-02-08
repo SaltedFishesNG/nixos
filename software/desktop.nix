@@ -71,12 +71,6 @@
     playerctld.enable = config.services.pipewire.enable;
     udev.packages = [ pkgs.usbutils ];
     udisks2.enable = true;
-
-    xserver = {
-      enable = true;
-      displayManager.startx.enable = true;
-      windowManager.i3.enable = true;
-    };
   };
 
   environment.sessionVariables = {
