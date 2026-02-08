@@ -3,8 +3,12 @@
     {
       name = "UNFREE";
       module =
-        { conf, ... }:
-        { lib, pkgs, ... }:
+        {
+          conf,
+          lib,
+          pkgs,
+          ...
+        }:
         {
           nixpkgs.config.allowUnfreePredicate =
             pkg:
