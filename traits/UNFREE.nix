@@ -22,6 +22,7 @@
 
       programs.steam = {
         enable = true;
+        package = pkgs.steam.override { extraArgs = "-system-composer"; };
         gamescopeSession.enable = true;
         extest.enable = true;
         remotePlay.openFirewall = true;
