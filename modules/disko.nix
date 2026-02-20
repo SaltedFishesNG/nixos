@@ -1,6 +1,6 @@
 { inputs, ... }:
 let
-  wichLUKS = true;
+  wichLUKS = false;
   btrfs = {
     type = "btrfs";
     extraArgs = [ "-f" ];
